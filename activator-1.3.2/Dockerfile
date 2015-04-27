@@ -8,29 +8,15 @@ FROM jeanjerome/java-1.7.0-openjdk:1.0.0
 
 MAINTAINER Jean-Jerome Levy <contact@scalastic.io>
 
-# Install Activator 1.3.2
-#RUN yum update -y && \
-#    yum install -y java-1.7.0-openjdk-devel && \
-#    yum clean all -y
-
-# Set locales
-#RUN localedef -v -c -i fr_FR -f UTF-8 fr_FR.UTF-8
-#ENV LANG fr_FR.UTF-8
-#ENV LC_CTYPE fr_FR.UTF-8
-#ENV LC_ALL fr_FR.UTF-8
-
 # Install dependencies
 RUN yum install -y unzip sudo
 # This ones could be also helpful : git build-essential software-properties-common
 
-# Fix sh
-#RUN rm /bin/sh && ln -s /bin/bash /bin/sh
-
 # Create editor userspace
 RUN groupadd play
 RUN useradd play -m -g play -s /bin/bash
+# Very important ! play user must have userid set to 1000 for a working activator
 RUN usermod -u 1000 play
-#RUN passwd -d -u play
 RUN passwd -l play
 RUN echo "play ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/play
 RUN chmod 0440 /etc/sudoers.d/play
@@ -44,7 +30,6 @@ RUN curl -O http://downloads.typesafe.com/typesafe-activator/1.3.2/typesafe-acti
 RUN unzip typesafe-activator-1.3.2.zip
 RUN rm -f typesafe-activator-1.3.2.zip
 RUN mv activator-1.3.2 /opt/activator
-#RUN chmod -R 770 /opt/activator
 RUN chown -R play:play /opt/activator
 
 # Remove unneeded dependencies

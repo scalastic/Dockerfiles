@@ -47,7 +47,7 @@ USER play
 WORKDIR /home/play
 CMD ["/bin/bash"]
 
-# Expose Code volume and play ports 9000 default 9999 debug 8888 activator ui
+# Expose play-app volume and play ports 9000 default
 VOLUME "/appli/play-app"
 EXPOSE 9000
 WORKDIR /appli/play-app

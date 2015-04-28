@@ -17,7 +17,7 @@ After building the image, you should run your container with some options. The e
  - Typesafe Activator 1.3.2
  - a play user isolating the activator running daemon and apps
 
- ##TODO:
+##TODO:
 
  - Optimize settings : remove unneeded packages, upgrade to Oracle JVM (?!),...
  - Secure settings : work on the sudoers config and other config files for sure
@@ -47,6 +47,20 @@ docker run --rm -it \
 
 Don't forget to adapt `/path/to/your/play/app` to your need.
 
+# How to start your Play app
+On the play user prompt, enter :
+
+```
+activator start
+
+```
+
+When the build is finished and your application started you should see :
+
+```
+[INFO] play - Application started (Prod)
+[INFO] play - Listening for HTTP on /0:0:0:0:0:0:0:0:9000
+```
 
 ## Image inheritance
 

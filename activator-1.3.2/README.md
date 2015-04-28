@@ -40,7 +40,7 @@ Here is an example of a docker run command:
 
 ```
 docker run --rm -it \
-		-v "/path/to/your/play/app:/appli/play-app" \
+		-v /path/to/your/play/app:/appli/play-app \
 		-p 80:9000 \
 		jeanjerome/activator-1.3.2
 ```
